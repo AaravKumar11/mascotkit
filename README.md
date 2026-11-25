@@ -10,7 +10,14 @@
   <a href="https://github.com/AaravKumar11/mascotkit/pulls"><img alt="PRs welcome" src="https://img.shields.io/badge/PRs-welcome-2f9e7a.svg"></a>
 </p>
 
-<p align="center"><img src="docs/screenshot.png" alt="The mascotkit studio with a purple bunny mascot" width="800"></p>
+<p align="center"><img src="docs/preview-drop.png" alt="The mascotkit studio with a blue drop mascot" width="900"></p>
+
+<table>
+  <tr>
+    <td><img src="docs/preview-cat.png" alt="A yellow cat mascot with a squinted expression"></td>
+    <td><img src="docs/preview-frog.png" alt="A green frog mascot with a halo"></td>
+  </tr>
+</table>
 
 mascotkit is a small, open-source studio for building a cute mascot for your app in about a minute. Pick a 3D shape or animal, give it a mood, make it blink, bounce or nod, then export it as PNG, a 3D model or a React component.
 
