@@ -45,13 +45,26 @@ Open http://localhost:3000.
 
 ### Turn on AI generation (optional)
 
-Everything works without this. To enable the "Describe it" box, copy `.env.example` to `.env.local` and add your Anthropic API key:
+Everything in the studio works without an API key. You only need one for the **Describe it** box, where you type something like "a sleepy purple bunny for a meditation app" and Claude builds the mascot for you.
 
-```bash
-cp .env.example .env.local
-```
+1. Get an API key from the [Claude Console](https://platform.claude.com) under **Settings > API keys**.
+2. In the project folder, copy the example env file:
 
-Generation uses Claude to choose from the same parts you see in the studio, so the result is always a real, editable mascot. Each request costs a fraction of a cent on your own key.
+   ```bash
+   cp .env.example .env.local
+   ```
+
+3. Open `.env.local` and paste your key after the `=` sign:
+
+   ```bash
+   ANTHROPIC_API_KEY=sk-ant-your-key-here
+   ```
+
+4. Restart the dev server (stop it with Ctrl+C, then run `npm run dev` again).
+
+Put the key in `.env.local`, not in `.env.example`. `.env.local` is ignored by git, so your key stays on your machine and is never pushed to GitHub. The key is only read on the server (in `src/app/api/generate/route.ts`), so it is never sent to the browser.
+
+Claude picks from the same parts you see in the studio, so the result is always a real, editable mascot. Each request costs a fraction of a cent on your own key. If no key is set, the Describe it box shows a message explaining how to add one.
 
 ## Use the mascot in your React app
 
@@ -133,7 +146,7 @@ npm run build
 
 ## Deploy
 
-It is a standard Next.js app, so it runs anywhere Next.js does. On Vercel, import the repo and optionally add `ANTHROPIC_API_KEY` as an environment variable. If you deploy publicly with a key, add rate limiting to `/api/generate` so strangers cannot run up your bill.
+It is a standard Next.js app, so it runs anywhere Next.js does. On Vercel, import the repo and, if you want AI generation, add `ANTHROPIC_API_KEY` under **Settings > Environment Variables** (there is no `.env.local` on a hosted server). If you deploy publicly with a key, add rate limiting to `/api/generate` so strangers cannot run up your bill.
 
 ## License
 
